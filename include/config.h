@@ -6,7 +6,7 @@
 
 namespace config {
 
-constexpr char kFirmwareVersion[] = "2.0.2";
+constexpr char kFirmwareVersion[] = "2.0.3";
 /** Sent with every outbound HTTP request. adsb.lol rejects the stock
  *  "ESP32HTTPClient" agent with 403, so this must stay a custom string. */
 constexpr char kUserAgent[] = "PlaneRadar/2.0 (ESP32-C3)";
@@ -59,12 +59,23 @@ constexpr unsigned long kBootFactoryHoldMs = 10000UL;
 /** Info screen stays up this long (tap dismisses it sooner). */
 constexpr unsigned long kInfoScreenMs = 12000UL;
 
+#ifdef BUILD_2424S012
+// --- Display: 2424S012 module with GC9A01 1.28" round 240×240 (SPI) ---
+#pragma message "config.h: configured for 2424S012 module with integrated GC9A01"
+constexpr gpio_num_t kDisplayPinRst = static_cast<gpio_num_t>(-1);
+constexpr gpio_num_t kDisplayPinCs = GPIO_NUM_10;
+constexpr gpio_num_t kDisplayPinDc = GPIO_NUM_2;
+constexpr gpio_num_t kDisplayPinMosi = GPIO_NUM_7;  // display SDA
+constexpr gpio_num_t kDisplayPinSclk = GPIO_NUM_6;  // display SCL
+#else
 // --- Display: GC9A01 1.28" round 240×240 (SPI) ---
+#pragma message "config.h: configured for ESP32-C3 with GC9A01"
 constexpr gpio_num_t kDisplayPinRst = GPIO_NUM_0;
 constexpr gpio_num_t kDisplayPinCs = GPIO_NUM_1;
 constexpr gpio_num_t kDisplayPinDc = GPIO_NUM_10;
 constexpr gpio_num_t kDisplayPinMosi = GPIO_NUM_3;  // display SDA
 constexpr gpio_num_t kDisplayPinSclk = GPIO_NUM_4;  // display SCL
+#endif
 
 constexpr int kDisplayWidth = 240;
 constexpr int kDisplayHeight = 240;
