@@ -1,6 +1,6 @@
 # Plane Radar v2
 
-Firmware for an **ESP32-C3 Super Mini** with a **1.28″ round GC9A01** display (240×240): a live ADS-B radar centred on your location. This is a reworked copy of [MatixYo/ESP32-Plane-Radar](https://github.com/MatixYo/ESP32-Plane-Radar) — same hardware and wiring, new Wi-Fi setup, new settings page, and on-screen feed diagnostics.
+Firmware for an **ESP32-C3 Super Mini** with a **1.28″ round GC9A01** display (240×240): a live ADS-B radar centered on your location. This is a reworked copy of [MatixYo/ESP32-Plane-Radar](https://github.com/MatixYo/ESP32-Plane-Radar) — same hardware and wiring, new Wi-Fi setup, new settings page, and on-screen feed diagnostics. This fork adds a setting to turn the tracked aircraft count on and off in the display. It also adds a build configuration to build the code for the [ESP32-2424S012 module (non-touch)](https://www.espboards.dev/esp32/cyd-esp32-2424s012/) by defining BUILD_2424S012 to the compiler. The default is the original hardware configuration.
 
 <p align="center">
   <img src="docs/plane-radar-timelapse.gif" width="400" alt="Time-lapse of the radar on the round display, tracking about ten aircraft at the 100 km range">
